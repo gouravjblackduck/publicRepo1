@@ -1,5 +1,5 @@
 name: Coverity Scan
-"on":
+on:
   push:
     branches:
       - main
@@ -16,7 +16,7 @@ name: Coverity Scan
       - release
   workflow_dispatch: {}
 jobs:
-  scan:
+  coverity:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source
