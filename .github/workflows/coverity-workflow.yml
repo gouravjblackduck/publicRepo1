@@ -1,5 +1,15 @@
+# GitHub Action – Black Duck Security Scan:
+#     https://documentation.blackduck.com/bundle/bridge/page/documentation/c_using-github-action.html
+# GitHub Prerequisites:
+#     https://documentation.blackduck.com/bundle/bridge/page/documentation/c_github-prerequisites.html
+# Additional GitHub Configuration:
+#     https://documentation.blackduck.com/bundle/bridge/page/documentation/c_additional-github-parameters.html
+# Using the Black Duck Security Scan Action with Coverity:
+#     https://documentation.blackduck.com/bundle/bridge/page/documentation/c_github-coverity.html
+# Using Bridge CLI with Coverity:
+#     https://documentation.blackduck.com/bundle/bridge/page/documentation/c_using-bridge-with-coverity-connect.html
 name: Coverity Scan
-"on":
+on:
   push:
     branches:
       - main
@@ -16,7 +26,7 @@ name: Coverity Scan
       - release
   workflow_dispatch: {}
 jobs:
-  scan:
+  coverity:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source
@@ -28,8 +38,3 @@ jobs:
           coverity_url: ${{ vars.COVERITY_URL }}
           coverity_user: ${{ secrets.COVERITY_USER }}
           coverity_passphrase: ${{ secrets.COVERITY_PASSPHRASE }}
-          coverity_local: false
-          coverity_waitForScan: true
-          mark_build_status: failure
-          include_diagnostics: false
-          coverity_prComment_enabled: false
